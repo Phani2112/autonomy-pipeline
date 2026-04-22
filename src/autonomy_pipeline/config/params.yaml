@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# autonomy_pipeline parameters
+# Edit these without touching code.
+# ---------------------------------------------------------------------------
+
+obstacle_grid_node:
+  ros__parameters:
+    grid:
+      resolution_m: 0.05        # 5 cm / cell
+      size_m: 10.0              # 10 m x 10 m window around robot
+      frame_id: odom            # Grid is published in the odom frame
+    robot:
+      frame_id: base_link
+    scan:
+      topic: /scan
+      min_range_m: 0.10
+      max_range_m: 8.0          # Cap at 8 m regardless of LaserScan.range_max
+    odom:
+      topic: /odom
+    publish:
+      grid_topic: /local_costmap
+      markers_topic: /obstacles
+      rate_hz: 5.0              # Costmap pub rate. Scan integration runs at sensor rate.
+    logodds:
+      l_occ:  0.85              # ~ log(0.7/0.3)
+      l_free: -0.40             # ~ log(0.4/0.6)
+      l_min: -2.0
+      l_max:  3.5
+    markers:
+      danger_radius_m: 0.6      # Only render occupied cells within this radius
+
+fake_sensor_publisher:
+  ros__parameters:
+    scan:
+      rate_hz: 10.0
+      range_max_m: 10.0
+      noise_sigma_m: 0.02
+      dropout_prob: 0.01
+      num_beams: 360
+    odom:
+      rate_hz: 50.0
+    robot:
+      linear_speed_mps: 0.25
+      angular_speed_radps: 0.20
+    frames:
+      odom: odom
+      base: base_link
