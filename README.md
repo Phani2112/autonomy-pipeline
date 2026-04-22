@@ -46,7 +46,7 @@ surface a downstream planner (e.g. Nav2) would consume.
 | RViz2 | shipped with ROS 2 |
 
 ```bash
-# ROS 2 Python deps (usually already installed)
+# ROS 2 Python deps 
 sudo apt install ros-${ROS_DISTRO}-rclpy ros-${ROS_DISTRO}-rviz2 \
                  python3-numpy python3-colcon-common-extensions
 ```
