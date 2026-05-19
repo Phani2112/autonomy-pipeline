@@ -1,7 +1,7 @@
 # autonomy_pipeline
 
-**Track A** submission for the Automation Expert Intern evaluation task:
-a minimal reproducible **Perception → local-mapping** pipeline for a
+
+A minimal reproducible **Perception → local-mapping** pipeline for a
 Jetson-class mobile robot using 2D LiDAR + wheel odometry.
 
 The package ships with a synthetic sensor publisher, so you can clone,
@@ -175,19 +175,6 @@ autonomy_ws/
     └── setup.py
 ```
 
----
-
-## What I'd improve with more time
-
-* TF2 integration (listen to `map → odom → base_link` instead of
-  assuming `odom == map`).
-* Replace the per-beam Python loop with a vectorised numpy raycaster
-  (≈10× faster on a Jetson).
-* Proper Nav2 costmap plugin wrapper so planners consume this directly.
-* pytest-based unit tests for log-odds update, Bresenham, and quaternion
-  helpers — stubbed out in `test/` but not included in this submission
-  to stay within the time-box.
-* Replay-driven CI: a tiny rosbag fixture + GH Actions run.
 
 ---
 
